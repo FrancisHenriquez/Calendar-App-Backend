@@ -16,11 +16,11 @@ app.use( express.json() );
 //Routes
 app.use('/api/auth', require('./routes/auth'));
 
-//TODO: CRUD: Events
+//Todo: CRUD: Events
 
-// Petition listening 
+//* Petition listening 
 app.listen( process.env.PORT, () => {
-    console.log(`Servidor corriendo en el puerto ${ process.env.PORT }`)
+    console.log(`Server runing at  ${ process.env.PORT }`)
 })
 
 
