@@ -2,21 +2,20 @@
 /* 
     Users routes / Authorisation 
     
-
-
 */
 
 const { Router } = require('express');
 const { registerUser, login, renew } = require('../controllers/authControlles');
 const router = Router();
 const { check } = require('express-validator');
+const { validarCampos } = require('../middlewares/field-valid')
 
 
 router.post('/register', 
     [ //*middlewares
     check('name', 'Name needed').not().isEmpty(),
     check('email', 'Email needed').isEmail(),
-    check('password', 'Password needed').isLength({min: 6})
+    check('password', 'Password needs at least 6 characters').isLength({min: 6}), validarCampos
     ]
     ,
     registerUser );
@@ -24,7 +23,7 @@ router.post('/register',
 router.post('/',
     [//*middlewares
     check('email', 'Email needed').isEmail(),
-    check('password', 'Password needed').isLength({min: 6})
+    check('password', 'Password needs at least 6 characters').isLength({min: 6}), validarCampos
     ],
     login );
     
