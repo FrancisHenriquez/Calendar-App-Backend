@@ -6,7 +6,7 @@ const dbConnection = async() => {
         mongoose.connect(process.env.DB_CONE, {
             useNewUrlParser: true, 
             useUnifiedTopology: true,
-            // useCreateIndex: true 
+            // useCreateIndex: true //!deprecated 
         });
 
         console.log('Data base is online');
