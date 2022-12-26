@@ -1,11 +1,16 @@
 
 const express = require('express');
+const { dbConnection } = require('./database/config')
 require('dotenv').config();
 
 console.log(process.env)
 
-// Server creation
+//* Server creation
 const app = express();
+
+//* Data base
+dbConnection();
+
 
 //* Public directory
 app.use(express.static('public'));
@@ -13,7 +18,7 @@ app.use(express.static('public'));
 //* lecture and body parse 
 app.use( express.json() );
 
-//Routes
+//*Routes
 app.use('/api/auth', require('./routes/auth'));
 
 //Todo: CRUD: Events
