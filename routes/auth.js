@@ -5,10 +5,11 @@
 */
 
 const { Router } = require('express');
-const { registerUser, login, renew } = require('../controllers/authControlles');
+const { registerUser, login, renew, revalidarToken } = require('../controllers/authControlles');
 const router = Router();
 const { check } = require('express-validator');
 const { validarCampos } = require('../middlewares/field-valid')
+const  { validarJWT, } = require('../middlewares/validar-jwt')
 
 
 router.post('/register', 
@@ -27,6 +28,6 @@ router.post('/',
     ],
     login );
     
-router.get('/renew', renew );
+router.get('/renew', validarJWT, revalidarToken );
 
 module.exports = router;

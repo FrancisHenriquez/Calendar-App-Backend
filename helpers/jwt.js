@@ -1,5 +1,7 @@
 const jwt = require('jsonwebtoken');
 
+//* Generador de JWT
+
 const generarJWT = ( uid, name ) => {
 
     return new Promise (( resolve , reject) => {
